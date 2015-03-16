@@ -49,6 +49,9 @@ endif
 
 " KEYBINDINGS
 
+" map semicolon to colon to improve sanity
+nnoremap ; :
+
 let mapleader=","     " leader is , instead of \
 
 " map <leader><space> to clear search highlighting 
