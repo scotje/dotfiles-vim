@@ -4,14 +4,30 @@ execute pathogen#infect()
 " SYNTAX HIGHLIGHTING
 colorscheme badwolf   " set default color scheme
 syntax enable		      " enable syntax processing
+"set background=dark
+"let g:solarized_termcolors=256
+"let g:solarized_visibility = "high"
+"let g:solarized_contrast = "high"
+"let g:solarized_termtrans = 1
+"colorscheme solarized
 set showmatch         " highlight matching bracket, paren, etc.
+
+" RAINBOW PARENS (https://github.com/luochen1990/rainbow)
+let g:rainbow_active = 1 " activate rainbow parens
+let g:rainbow_conf = {
+\   'guifgs': ['royalblue3', 'darkorange3', 'seagreen3', 'firebrick'],
+\   'ctermfgs': ['lightblue', 'lightyellow', 'lightcyan', 'lightmagenta'],
+\   'operators': '_,_',
+\   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
+\}
+
 
 " INDENTATION
 set tabstop=2		      " number of spaces per <tab>
 set softtabstop=2	    " number of spaces inserted/removed when hitting tab
 set expandtab		      " use spaces instead of <tab>
 set shiftwidth=2      " auto indent width
-filetype indent on    " detect filetypes and load type-specific indentation from ~/.vim/indent/*
+filetype plugin indent on    " detect filetypes and load type-specific indentation from ~/.vim/indent/*
 
 " POSITION
 set number            " show line numbers
@@ -37,6 +53,8 @@ let g:ctrlp_switch_buffer = 0                   " always open in new buffer
 let g:ctrlp_working_path_mode = 0               " follow vim working dir
 let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'  " use silver_searcher to find matching files
 
+" OMNICOMPLETE
+set omnifunc=syntaxcomplete#Complete
 
 " use bar cursor even inside tmux (NOT WORKING)
 if exists('$TMUX')
@@ -79,11 +97,16 @@ map <C-n> :NERDTreeToggle<CR>
 augroup configgroup
   autocmd!
   autocmd VimEnter * highlight clear SignColumn
-  autocmd BufWritePre *.{rb,yml,js,hbs,html,erb,css,scss},Gemfile,Rakefile,Harrisonfile :call <SID>StripTrailingWhitespaces()
+  autocmd BufWritePre *.{rb,yml,js,hbs,html,erb,css,scss,clj},Gemfile,Rakefile,Harrisonfile :call <SID>StripTrailingWhitespaces()
   
   " run NERDTree if opened with no file
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+  "au VimEnter * RainbowParenthesesToggle
+  "au Syntax * RainbowParenthesesLoadRound
+  "au Syntax * RainbowParenthesesLoadSquare
+  "au Syntax * RainbowParenthesesLoadBraces
 augroup END
 
 " BACKUPS
@@ -92,6 +115,11 @@ set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp     " store backups outside 
 set backupskip=/tmp/*,/private/tmp/*
 set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set writebackup
+
+" airline
+set laststatus=2
+let g:airline_powerline_fonts = 1
+
 
 " strips trailing whitespace at the end of files. this
 " is called on buffer write in the autogroup above.
