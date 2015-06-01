@@ -21,6 +21,8 @@ let g:rainbow_conf = {
 \   'parentheses': ['start=/(/ end=/)/ fold', 'start=/\[/ end=/\]/ fold', 'start=/{/ end=/}/ fold'],
 \}
 
+" BACKSPACE BEHAVIOR
+set backspace=indent,eol,start
 
 " INDENTATION
 set tabstop=2		      " number of spaces per <tab>
