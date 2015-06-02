@@ -95,6 +95,10 @@ nnoremap <leader>a :Ag<space>
 " map NERDTree to Ctrl-n
 map <C-n> :NERDTreeToggle<CR>
 
+" expand/contract region with v/Ctrl-v
+vmap v <Plug>(expand_region_expand)
+vmap <C-v> <Plug>(expand_region_shrink)
+
 " AUTO COMMANDS
 augroup configgroup
   autocmd!
