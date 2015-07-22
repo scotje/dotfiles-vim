@@ -74,7 +74,7 @@ nnoremap ; :
 
 let mapleader=","     " leader is , instead of \
 
-" map <leader><space> to clear search highlighting 
+" map <leader><space> to clear search highlighting
 nnoremap <leader><space> :nohlsearch<CR>
 
 " toggle code folding with <space>
@@ -104,10 +104,13 @@ augroup configgroup
   autocmd!
   autocmd VimEnter * highlight clear SignColumn
   autocmd BufWritePre *.{rb,yml,js,hbs,html,erb,css,scss,clj},Gemfile,Rakefile,Harrisonfile :call <SID>StripTrailingWhitespaces()
-  
+
   " run NERDTree if opened with no file
   autocmd StdinReadPre * let s:std_in=1
   autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+
+  " Evaluate Clojure buffers on load
+  autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
 
   "au VimEnter * RainbowParenthesesToggle
   "au Syntax * RainbowParenthesesLoadRound
@@ -137,5 +140,5 @@ function! <SID>StripTrailingWhitespaces()
   %s/\s\+$//e
   let @/=_s
   call cursor(l, c)
-endfunction    
+endfunction
 
