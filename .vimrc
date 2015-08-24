@@ -12,6 +12,9 @@ syntax enable		      " enable syntax processing
 "colorscheme solarized
 set showmatch         " highlight matching bracket, paren, etc.
 
+" CLIPBOARD
+set clipboard=unnamed
+
 " RAINBOW PARENS (https://github.com/luochen1990/rainbow)
 let g:rainbow_active = 1 " activate rainbow parens
 let g:rainbow_conf = {
