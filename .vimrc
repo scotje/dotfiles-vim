@@ -51,6 +51,7 @@ set hlsearch          " highlight search matches
 " MISC
 set showcmd           " show in progress commands (including leader) in the bottom right
 set lazyredraw        " only redraw at the end of a macro
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1 " let neovim change cursor shapes
 
 " FOLDING
 set foldenable        " enable code folding
