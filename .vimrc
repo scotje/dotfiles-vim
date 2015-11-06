@@ -109,6 +109,9 @@ map <C-n> :NERDTreeToggle<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
+" Ctrl-t for new tab
+nnoremap <C-t> :tabnew<CR>
+
 " AUTO COMMANDS
 augroup configgroup
   autocmd!
@@ -138,7 +141,9 @@ set writebackup
 " airline
 set laststatus=2
 let g:airline_powerline_fonts = 1
-
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#left_sep = ' '
+let g:airline#extensions#tabline#left_alt_sep = '|'
 
 " strips trailing whitespace at the end of files. this
 " is called on buffer write in the autogroup above.
