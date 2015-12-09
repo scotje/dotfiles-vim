@@ -62,6 +62,8 @@ set foldmethod=indent " identify fold regions based on indentation
 " This allows buffers to be hidden if you've modified a buffer.
 set hidden
 
+set mouse=a
+
 " CTRL-P Settings
 let g:ctrlp_match_window = 'bottom,order:ttb'   " order from top to bottom
 let g:ctrlp_switch_buffer = 0                   " always open in new buffer
