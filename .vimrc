@@ -59,6 +59,9 @@ set foldlevelstart=99 " default to nothing folded on open
 set foldnestmax=10    " don't allow more than 10 nested folds
 set foldmethod=indent " identify fold regions based on indentation
 
+" This allows buffers to be hidden if you've modified a buffer.
+set hidden
+
 " CTRL-P Settings
 let g:ctrlp_match_window = 'bottom,order:ttb'   " order from top to bottom
 let g:ctrlp_switch_buffer = 0                   " always open in new buffer
@@ -109,8 +112,18 @@ map <C-n> :NERDTreeToggle<CR>
 vmap v <Plug>(expand_region_expand)
 vmap <C-v> <Plug>(expand_region_shrink)
 
-" Ctrl-t for new tab
-nnoremap <C-t> :tabnew<CR>
+" To open a new empty buffer
+nmap <leader>t :enew<cr>
+
+" Move to the next buffer
+nmap <leader>l :bnext<CR>
+
+" Move to the previous buffer
+nmap <leader>h :bprevious<CR>
+
+" Close the current buffer and move to the previous one
+" This replicates the idea of closing a tab
+nmap <leader>bq :bp <BAR> bd #<CR>
 
 " AUTO COMMANDS
 augroup configgroup
@@ -119,8 +132,8 @@ augroup configgroup
   autocmd BufWritePre *.{rb,yml,js,hbs,html,erb,css,scss,clj},Gemfile,Rakefile,Harrisonfile :call <SID>StripTrailingWhitespaces()
 
   " run NERDTree if opened with no file
-  autocmd StdinReadPre * let s:std_in=1
-  autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+  "autocmd StdinReadPre * let s:std_in=1
+  "autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
   " Evaluate Clojure buffers on load
   autocmd BufRead *.clj try | silent! Require | catch /^Fireplace/ | endtry
