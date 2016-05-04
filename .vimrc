@@ -18,6 +18,9 @@ autocmd FileType clojure setlocal lispwords+=GET,POST,PUT,DELETE,HEAD,ANY,contex
 let g:clojure_fuzzy_indent_patterns = ['^with', '^def', '^let', '^\.']
 let g:clojure_special_indent_words = 'deftype,defrecord,reify,proxy,extend-type,extend-protocol,letfn,defservice'
 
+" DISABLE CRAZY vim-json QUOTE HIDING
+let g:vim_json_syntax_conceal = 0
+
 " CLIPBOARD
 set clipboard=unnamed
 
