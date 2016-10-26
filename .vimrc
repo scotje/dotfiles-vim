@@ -85,6 +85,16 @@ else
   let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 endif
 
+" SYNTASTIC
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
 " KEYBINDINGS
 
 " map semicolon to colon to improve sanity
