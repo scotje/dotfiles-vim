@@ -1,0 +1,9 @@
+Given (an encoded string):
+  <value>QWJjMTIz</value>
+
+Do (visual decode):
+  f>lvt<
+  \<space>btoa
+
+Expect (decoded string):
+  <value>Abc123</value>
