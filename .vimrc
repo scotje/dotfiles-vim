@@ -94,6 +94,11 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_signs = 1
 
+let g:syntastic_mode_map = {
+        \ "mode": "active",
+        \ "active_filetypes": ["ruby", "javascript", "sass"],
+        \ "passive_filetypes": ["puppet", "mustache"] }
+
 " KEYBINDINGS
 
 " map semicolon to colon to improve sanity
