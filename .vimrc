@@ -189,3 +189,5 @@ function! <SID>StripTrailingWhitespaces()
   call cursor(l, c)
 endfunction
 
+" make vim-jsx-pretty recognize jsx filetype
+autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
