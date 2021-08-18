@@ -191,3 +191,12 @@ endfunction
 
 " make vim-jsx-pretty recognize jsx filetype
 autocmd BufNewFile,BufRead *.jsx set filetype=javascript.jsx
+
+" vim-go config
+let g:go_imports_autosave = 0 " don't prune imports on save
+let g:go_highlight_functions = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_extra_types = 1
