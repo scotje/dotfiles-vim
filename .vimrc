@@ -75,6 +75,10 @@ let g:ctrlp_user_command = 'ag %s -l --nocolor --hidden -g ""'  " use silver_sea
 
 " OMNICOMPLETE
 set omnifunc=syntaxcomplete#Complete
+autocmd CompleteDone * pclose
+
+" AUTOCOMPLETE MUCOMPLETE
+let g:mucomplete#minimum_prefix_length = 0
 
 " use bar cursor even inside tmux (NOT WORKING)
 if exists('$TMUX')
@@ -143,6 +147,13 @@ nmap <leader>h :bprevious<CR>
 " Close the current buffer and move to the previous one
 " This replicates the idea of closing a tab
 nmap <leader>bq :bp <BAR> bd #<CR>
+nmap <leader>bqq :bp <BAR> bd! #<CR>
+
+" Copy relative path of current buffer to clipboard
+nnoremap yp :call setreg('+', expand('%'))<CR>
+
+" Copy relative path and line number of current buffer to clipboard
+nnoremap yb :call setreg('+', join([expand('%'),  line(".")], ':'))<CR>
 
 " AUTO COMMANDS
 augroup configgroup
@@ -200,3 +211,10 @@ let g:go_highlight_function_calls = 1
 let g:go_highlight_types = 1
 let g:go_highlight_fields = 1
 let g:go_highlight_extra_types = 1
+let g:go_auto_type_info = 1
+let g:go_updatetime = 250
+
+" List implementations of interface method
+nnoremap gi :GoImplements<CR>
+
+set cmdheight=2
