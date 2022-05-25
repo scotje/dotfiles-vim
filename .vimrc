@@ -12,6 +12,22 @@ syntax enable		      " enable syntax processing
 "colorscheme solarized
 set showmatch         " highlight matching bracket, paren, etc.
 
+" tsxreact colors
+" dark red
+hi tsxTagName guifg=#E06C75
+hi tsxComponentName guifg=#E06C75
+hi tsxCloseComponentName guifg=#E06C75
+
+" orange
+hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+hi tsxCloseTagName guifg=#F99575
+hi tsxAttributeBraces guifg=#F99575
+hi tsxEqual guifg=#F99575
+
+" yellow
+hi tsxAttrib guifg=#F8BD7F cterm=italic
+
 " PUPPET SPECIFIC CLOJURE FORMAT SETTINGS
 let g:clojure_align_subforms = 1
 autocmd FileType clojure setlocal lispwords+=GET,POST,PUT,DELETE,HEAD,ANY,context,cond
