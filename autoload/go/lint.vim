@@ -135,7 +135,7 @@ function! go#lint#Diagnostics(bang, ...) abort
 
     let l:import_paths = [l:pkg]
   else
-    let l:import_paths = a:000
+    let l:import_paths = call('go#util#ExpandPattern', a:000)
   endif
 
   let l:errformat = s:errorformat('gopls')
@@ -169,7 +169,7 @@ endfunction
 function! go#lint#Golint(bang, ...) abort
   call go#cmd#autowrite()
 
-  let l:type = 'golint'
+  let l:type = 'lint'
   let l:status = {
         \ 'desc': 'current status',
         \ 'type': l:type,

@@ -70,7 +70,7 @@ command! -nargs=* -range -complete=customlist,go#package#Complete GoDoc call go#
 command! -nargs=* -range -complete=customlist,go#package#Complete GoDocBrowser call go#doc#OpenBrowser(<f-args>)
 
 " -- fmt
-command! -nargs=0 GoFmt call go#fmt#Format(-1)
+command! -nargs=0 GoFmt call go#fmt#Format(0)
 command! -nargs=0 GoFmtAutoSaveToggle call go#fmt#ToggleFmtAutoSave()
 command! -nargs=0 GoImports call go#fmt#Format(1)
 
@@ -103,7 +103,9 @@ command! -nargs=* -complete=customlist,go#impl#Complete GoImpl call go#impl#Impl
 command! -nargs=0 GoTemplateAutoCreateToggle call go#template#ToggleAutoCreate()
 
 " -- keyify
-command! -nargs=0 GoKeyify call go#keyify#Keyify()
+if go#package#InGOPATH()
+  command! -nargs=0 GoKeyify call go#keyify#Keyify()
+endif
 
 " -- fillstruct
 command! -nargs=0 GoFillStruct call go#fillstruct#FillStruct()
@@ -128,6 +130,7 @@ command! -nargs=0 GoIfErr call go#iferr#Generate()
 command! -nargs=+ -complete=dir GoAddWorkspace call go#lsp#AddWorkspaceDirectory(<f-args>)
 command! -nargs=0 GoLSPDebugBrowser call go#lsp#DebugBrowser()
 command! -nargs=* -bang GoDiagnostics call go#lint#Diagnostics(<bang>0, <f-args>)
+command! -nargs=? GoModReload call go#lsp#ModReload()
 
 " -- term
 command! GoToggleTermCloseOnExit call go#term#ToggleCloseOnExit()
