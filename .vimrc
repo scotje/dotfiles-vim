@@ -229,6 +229,7 @@ let g:go_highlight_fields = 1
 let g:go_highlight_extra_types = 1
 let g:go_auto_type_info = 1
 let g:go_updatetime = 250
+let g:go_build_tags = 'wireinject' " include wire.go but not wire_gen.go in gopls scope
 
 " List implementations of interface method
 nnoremap gi :GoImplements<CR>
